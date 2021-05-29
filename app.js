@@ -45,6 +45,18 @@ function createSocketioConnection() {
       socket.to(userAndRoom[socket.id][1]).emit("user msg", msg, username);
     });
 
+    // while typing
+    socket.on("typing event", (inputValue, username) => {
+      // comses error due to undifined
+      try {
+        socket
+          .to(userAndRoom[socket.id][1])
+          .emit("typing event", inputValue, username);
+      } catch (e) {
+        console.log(e);
+      }
+    });
+    // final
     socket.on("disconnect", () => {
       console.log(`${details[socket.id]} is disconnected`);
     });
