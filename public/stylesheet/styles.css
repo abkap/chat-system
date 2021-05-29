@@ -7,7 +7,7 @@
   width: 5px;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(182, 182, 182);
+  background: #646569;
 }
 body {
   height: 100vh;
@@ -68,6 +68,11 @@ li {
   /* background: lightgrey; */
 }
 
+.row button {
+  border: none;
+  background: none;
+}
+
 .row input {
   width: 80%;
   height: 40px;
@@ -87,6 +92,16 @@ li {
   color: #7c89c5;
   line-height: 200%;
   border-radius: 5px;
+}
+
+.row i:active {
+  background: #515255;
+}
+
+@media (max-height: 600px) {
+  .container {
+    height: 80%;
+  }
 }
 
 @media (max-width: 920px) {

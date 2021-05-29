@@ -10,13 +10,16 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="../stylesheet/styles.css" />
+    <script defer src="../script/script.js"></script>
   </head>
   <body>
     <div class="container">
       <section class="msg">
         <div class="incoming-msg">
           <ul class="incoming-ul">
-            <li>hey</li>
+            <div class="msg-person">
+              <li>hey</li>
+            </div>
             <li>how are you</li>
           </ul>
         </div>
@@ -40,8 +43,16 @@
       </section>
       <section class="chat">
         <div class="row">
-          <input type="text" placeholder="Type something..." />
-          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+          <input
+            type="text"
+            placeholder="Type something..."
+            class="input-cls"
+          />
+          <form action="/" method="POST">
+            <button>
+              <i class="fa fa-paper-plane" aria-hidden="true"></i>
+            </button>
+          </form>
         </div>
       </section>
     </div>
