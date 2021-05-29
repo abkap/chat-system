@@ -54,7 +54,6 @@ function sendMsg() {
   }
 }
 socket.on("user msg", (msg, username) => {
-  console.log("messge recieved by " + username);
   recieveMsg(msg, username);
 });
 
