@@ -101,6 +101,18 @@ span {
   background: #515255;
 }
 
+.user-join {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-join ul li {
+  margin: 0;
+  color: #7c89c5;
+  background: transparent;
+}
+
 @media (max-height: 600px) {
   .container {
     height: 80%;

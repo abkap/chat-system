@@ -119,3 +119,25 @@ socket.on("typing event", (inputValue, username) => {
     isShowing = false;
   }, 1000);
 });
+
+// when user joins
+socket.on("user join", (username) => {
+  createUserJoin(username);
+  console.log("use join called");
+});
+
+function createUserJoin(username) {
+  const div = document.createElement("div");
+  const ul = document.createElement("ul");
+  const li = document.createElement("li");
+
+  li.textContent = `${username} joined`;
+
+  div.classList.add("user-join");
+
+  ul.appendChild(li);
+  div.appendChild(ul);
+  msgContainer.appendChild(div);
+  console.log(div);
+  msgContainer.scrollTop = msgContainer.scrollHeight;
+}

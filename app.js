@@ -20,7 +20,7 @@ app.get("/:roomid", (req, res) => {
   //   console.log(`room id(/:roomid) : ${roomId}`);
 });
 
-details = {};
+// details = {};
 userAndRoom = {};
 
 function createSocketioConnection() {
@@ -32,12 +32,17 @@ function createSocketioConnection() {
 
     socket.on("login", (username) => {
       console.log(`${username} is connected !`);
-      details[socket.id] = username;
+      //   details[socket.id] = username;
       userAndRoom[socket.id] = [username, globalRoomId];
       //   console.log(details);
       socket.join(userAndRoom[socket.id][1]);
       console.log("joined on room : " + userAndRoom[socket.id][1]);
       console.log(userAndRoom);
+      try {
+        socket.to(userAndRoom[socket.id][1]).emit("user join", username);
+      } catch (e) {
+        console.log(e);
+      }
     });
 
     socket.on("user chat", (msg, username) => {
@@ -62,7 +67,12 @@ function createSocketioConnection() {
     });
     // final
     socket.on("disconnect", () => {
-      console.log(`${details[socket.id]} is disconnected`);
+      //since undified is possible error may occur
+      try {
+        console.log(`${userAndRoom[socket.id][0]} is disconnected`);
+      } catch (e) {
+        console.log(e);
+      }
     });
   });
 }
