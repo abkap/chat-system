@@ -70,7 +70,6 @@ input.addEventListener("keydown", (event) => {
 // typing
 input.addEventListener("input", () => {
   socket.emit("typing event", input.value, username);
-  console.log("typing");
 });
 
 function createTyping(username) {
@@ -81,6 +80,7 @@ function createTyping(username) {
   var ul = document.createElement("ul"); //for ul
 
   li.textContent = "typing...";
+
   span.textContent = username;
 
   div2.classList.add("person-msg");

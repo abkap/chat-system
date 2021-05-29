@@ -41,8 +41,12 @@ function createSocketioConnection() {
     });
 
     socket.on("user chat", (msg, username) => {
-      // socket.broadcast.emit("user msg", msg, username);
-      socket.to(userAndRoom[socket.id][1]).emit("user msg", msg, username);
+      //   error when undifined
+      try {
+        socket.to(userAndRoom[socket.id][1]).emit("user msg", msg, username);
+      } catch (e) {
+        console.log(e);
+      }
     });
 
     // while typing
