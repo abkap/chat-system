@@ -17,7 +17,7 @@ app.get("/:roomid", (req, res) => {
   res.render("index");
   var roomId = req.params.roomid;
   globalRoomId = roomId;
-  console.log(`room id(/:roomid) : ${roomId}`);
+  //   console.log(`room id(/:roomid) : ${roomId}`);
 });
 
 details = {};
@@ -26,16 +26,23 @@ userAndRoom = {};
 function createSocketioConnection() {
   io.on("connection", (socket) => {
     //   console.log(" user is connected");
+    // as soon as the connection is avialable
+    // details[socket.id] = null;
+    // console.log(details);
+
     socket.on("login", (username) => {
       console.log(`${username} is connected !`);
       details[socket.id] = username;
+      userAndRoom[socket.id] = [username, globalRoomId];
+      //   console.log(details);
+      socket.join(userAndRoom[socket.id][1]);
+      console.log("joined on room : " + userAndRoom[socket.id][1]);
+      console.log(userAndRoom);
     });
-
-    socket.join(globalRoomId);
 
     socket.on("user chat", (msg, username) => {
       // socket.broadcast.emit("user msg", msg, username);
-      socket.to(globalRoomId).emit("user msg", msg, username);
+      socket.to(userAndRoom[socket.id][1]).emit("user msg", msg, username);
     });
 
     socket.on("disconnect", () => {
