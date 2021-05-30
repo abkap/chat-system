@@ -7,6 +7,7 @@ const incomingMsg = document.querySelector(".incoming-msg");
 const outgoingMsg = document.querySelector(".outgoing-msg");
 const outgoingUl = document.querySelector(".outgoing-ul");
 const incomingUl = document.querySelector(".incoming-ul");
+const starterMsg = document.querySelector(".starter-msg");
 
 var username = window.prompt("username");
 
@@ -39,6 +40,7 @@ function recieveMsg(msg, username) {
 }
 function sendMsg() {
   if (input.value) {
+    starterMsg.remove();
     var msg = input.value;
     // event send msg form client side to server
     socket.emit("user chat", msg, username);
@@ -123,7 +125,6 @@ socket.on("typing event", (inputValue, username) => {
 // when user joins
 socket.on("user join", (username) => {
   createUserJoin(username);
-  console.log("use join called");
 });
 
 function createUserJoin(username) {

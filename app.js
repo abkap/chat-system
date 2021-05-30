@@ -13,26 +13,30 @@ app.use(express.static("public"));
 //   res.render("index");
 // });
 var globalRoomId;
+app.get("/favicon.ico", (req, res) => {
+  return "favicon.ico";
+});
 app.get("/:roomid", (req, res) => {
   res.render("index");
   var roomId = req.params.roomid;
   globalRoomId = roomId;
-  //   console.log(`room id(/:roomid) : ${roomId}`);
+  console.log(`room id(/:roomid) : ${roomId}`);
 });
 
-// details = {};
+details = {};
 userAndRoom = {};
 
 function createSocketioConnection() {
   io.on("connection", (socket) => {
     //   console.log(" user is connected");
     // as soon as the connection is avialable
-    // details[socket.id] = null;
-    // console.log(details);
+
+    details[socket.id] = null;
+    console.log(details);
 
     socket.on("login", (username) => {
       console.log(`${username} is connected !`);
-      //   details[socket.id] = username;
+      details[socket.id] = username;
       userAndRoom[socket.id] = [username, globalRoomId];
       //   console.log(details);
       socket.join(userAndRoom[socket.id][1]);
@@ -69,7 +73,7 @@ function createSocketioConnection() {
     socket.on("disconnect", () => {
       //since undified is possible error may occur
       try {
-        console.log(`${userAndRoom[socket.id][0]} is disconnected`);
+        console.log(`${details[socket.id]} is disconnected`);
       } catch (e) {
         console.log(e);
       }
