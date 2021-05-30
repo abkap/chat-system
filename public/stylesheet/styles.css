@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
 }
+
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -33,7 +34,8 @@ span {
 }
 .container {
   overflow: hidden;
-  display: flex;
+  /* display: flex; */
+  display: none;
   flex-direction: column;
   width: 900px;
   height: 600px;

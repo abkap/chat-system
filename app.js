@@ -20,7 +20,7 @@ app.get("/:roomid", (req, res) => {
   res.render("index");
   var roomId = req.params.roomid;
   globalRoomId = roomId;
-  console.log(`room id(/:roomid) : ${roomId}`);
+  // console.log(`room id(/:roomid) : ${roomId}`);
 });
 
 details = {};
@@ -32,7 +32,7 @@ function createSocketioConnection() {
     // as soon as the connection is avialable
 
     details[socket.id] = null;
-    console.log(details);
+    // console.log(details);
 
     socket.on("login", (username) => {
       console.log(`${username} is connected !`);

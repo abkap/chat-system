@@ -1,5 +1,5 @@
 var socket = io();
-
+const container = document.querySelector(".container");
 const input = document.querySelector(".input-cls");
 const btn = document.querySelector("button");
 const msgContainer = document.querySelector(".msg");
@@ -8,11 +8,24 @@ const outgoingMsg = document.querySelector(".outgoing-msg");
 const outgoingUl = document.querySelector(".outgoing-ul");
 const incomingUl = document.querySelector(".incoming-ul");
 const starterMsg = document.querySelector(".starter-msg");
-
-var username = window.prompt("username");
-
+const continueButton = document.querySelector(".continue-button");
+const usernameInput = document.querySelector(".username-input");
+const usernameContainer = document.querySelector(".body");
+// var username = window.prompt("username");
+// container.style.display = "none";
+continueButton.addEventListener("click", sendUserLoginSignal);
+usernameInput.addEventListener("keydown", (event) => {
+  if (event.key == "Enter") sendUserLoginSignal();
+});
+function sendUserLoginSignal() {
+  username = usernameInput.value;
+  if (username.length >= 3) {
+    socket.emit("login", username);
+    usernameContainer.style.display = "none";
+    container.style.display = "flex";
+  }
+}
 // when the user connects
-socket.emit("login", username);
 
 btn.addEventListener("click", (e) => {
   e.preventDefault();
