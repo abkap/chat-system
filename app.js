@@ -9,10 +9,15 @@ const io = new Server(server);
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
-// app.get("/", (req, res) => {
-//   res.render("index");
-// });
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 var globalRoomId;
+app.get("/", (req, res) => {
+  if (req.query.link) res.redirect(`/${req.query.link}`);
+  else res.render("route");
+});
+
 app.get("/favicon.ico", (req, res) => {
   return "favicon.ico";
 });
@@ -20,7 +25,6 @@ app.get("/:roomid", (req, res) => {
   res.render("index");
   var roomId = req.params.roomid;
   globalRoomId = roomId;
-  // console.log(`room id(/:roomid) : ${roomId}`);
 });
 
 details = {};
@@ -28,17 +32,13 @@ userAndRoom = {};
 
 function createSocketioConnection() {
   io.on("connection", (socket) => {
-    //   console.log(" user is connected");
-    // as soon as the connection is avialable
-
     details[socket.id] = null;
-    // console.log(details);
 
     socket.on("login", (username) => {
       console.log(`${username} is connected !`);
       details[socket.id] = username;
       userAndRoom[socket.id] = [username, globalRoomId];
-      //   console.log(details);
+
       socket.join(userAndRoom[socket.id][1]);
       console.log("joined on room : " + userAndRoom[socket.id][1]);
       console.log(userAndRoom);
