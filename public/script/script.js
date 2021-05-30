@@ -11,12 +11,7 @@ const starterMsg = document.querySelector(".starter-msg");
 const continueButton = document.querySelector(".continue-button");
 const usernameInput = document.querySelector(".username-input");
 const usernameContainer = document.querySelector(".body");
-// var username = window.prompt("username");
-// container.style.display = "none";
-continueButton.addEventListener("click", sendUserLoginSignal);
-usernameInput.addEventListener("keydown", (event) => {
-  if (event.key == "Enter") sendUserLoginSignal();
-});
+
 function sendUserLoginSignal() {
   username = usernameInput.value;
   if (username.length >= 3) {
@@ -25,6 +20,12 @@ function sendUserLoginSignal() {
     container.style.display = "flex";
   }
 }
+
+continueButton.addEventListener("click", sendUserLoginSignal);
+usernameInput.addEventListener("keydown", (event) => {
+  if (event.key == "Enter") sendUserLoginSignal();
+});
+
 // when the user connects
 
 btn.addEventListener("click", (e) => {
