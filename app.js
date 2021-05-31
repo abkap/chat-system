@@ -73,6 +73,9 @@ function createSocketioConnection() {
     socket.on("disconnect", () => {
       //since undified is possible error may occur
       try {
+        socket
+          .to(userAndRoom[socket.id][1])
+          .emit("user leave", details[socket.id]);
         console.log(`${details[socket.id]} is disconnected`);
       } catch (e) {
         console.log(e);
