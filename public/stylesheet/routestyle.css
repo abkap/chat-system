@@ -46,6 +46,6 @@
   color: rgb(80, 161, 127);
 }
 
-button:hover {
+.join-button:hover {
   background: #5f647a;
 }
