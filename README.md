@@ -1,16 +1,19 @@
 # chat-system
 
-## How it looks
+## demo image
 
 ![demo](./demo.png)
 
 ## requirement
 
-node js and npm
+1.  nodejs
+2.  npm package manager
 
-## how to deploy?
+## Run
 
-Clone this to your machine.Go to the folder containing _app.js_  
-run `npm install` which installs all packages needed  
-type `node app.js` which would start the server on port 3000  
-goto **localhost:3000** on your browser
+1. install dependencies  
+   `npm install`
+2. execute
+   `node app.js`
+
+**nodejs server will be hosted on _localhost:3000_**
