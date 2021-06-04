@@ -19,7 +19,7 @@
 **nodejs server will be hosted on _localhost:3000_**  
 
 ## How it looks
-![link page](./images/link)
+![link_page](./images/link)
 
 ![username page](./images/username)
 
