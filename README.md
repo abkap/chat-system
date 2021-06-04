@@ -4,7 +4,7 @@
 
 ![demo](./demo.png)
 
-## requirement
+## requirements
 
 1.  nodejs
 2.  npm package manager
