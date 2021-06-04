@@ -19,8 +19,8 @@
 **nodejs server will be hosted on _localhost:3000_**  
 
 ## How it looks
-![link_page](./images/link)
+![link page](./images/link.png)
 
-![username page](./images/username)
+![username page](./images/username.png)
 
-![chat page](./images/chat)
+![chat page](./images/chat.png)
