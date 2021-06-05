@@ -9,7 +9,7 @@
 1.  nodejs
 2.  npm package manager
 
-## How To Run ?
+## How To Run  
 
 1. install dependencies  
    `npm install`
