@@ -12,7 +12,7 @@
 ## How To Run  
 
 1. install dependencies  
-   `npm install`
+   `npm install`.This will install all the dependencies for this project
 2. execute
    `node app.js`
 
