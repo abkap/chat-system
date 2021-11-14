@@ -2,7 +2,7 @@
 
 ## Live Url
 
-[Click Here](chat.abkap.me)
+[Click Here](http://chat.abkap.me)
 
 ## demo image
 
