@@ -132,16 +132,6 @@ span {
 
 @media (max-width: 500px) {
   .container {
-    width: 340px;
-  }
-  li {
-    margin-right: 0;
-    margin-left: 0;
-  }
-}
-
-@media (max-width: 350px) {
-  .container {
     width: 100%;
     height: 100%;
     border-radius: 0;
